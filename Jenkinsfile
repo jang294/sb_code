@@ -71,10 +71,14 @@ pipeline {
          }
             post {
                 failure {
-                    echo 'Reppository clone failure'
-                }
+                    echo 'docker image failure'
+                    sh "docket image rm -f ${dockerHubRegistry}:${currentBuild.number}"
+                    sh "docker image rm -f ${dockerHubRegistry}:latest"
+                }   
                 success {
-                    echo 'Reppository clone success'
+                    echo 'docker image success'
+                    sh "docket image rm -f ${dockerHubRegistry}:${currentBuild.number}"
+                    sh "docker image rm -f ${dockerHubRegistry}:latest"
                 }
             }
         }
