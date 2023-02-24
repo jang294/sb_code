@@ -66,22 +66,10 @@ pipeline {
           // dockerHubRegistryCredential : environment에서 선언한 docker_cre  
             sh "docker push ${dockerHubRegistry}:${currentBuild.number}"
             sh "docker push ${dockerHubRegistry}:latest"
-            }
-
-         }
-            post {
-                failure {
-                    echo 'docker image failure'
-                    sh "docket image rm -f ${dockerHubRegistry}:${currentBuild.number}"
-                    sh "docker image rm -f ${dockerHubRegistry}:latest"
-                }   
-                success {
-                    echo 'docker image success'
-                    sh "docket image rm -f ${dockerHubRegistry}:${currentBuild.number}"
-                    sh "docker image rm -f ${dockerHubRegistry}:latest"
-                }
-            }
+          }
         }
+      }
+
         stage('docker container deploy') {
           steps {
             sh "docker rm -f sb"
