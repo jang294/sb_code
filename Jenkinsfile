@@ -71,10 +71,10 @@ pipeline {
          }
             post {
                 failure {
-                    echo 'Reppository clone failure'
+                    echo 'failure'
                 }
                 success {
-                    echo 'Reppository clone success'
+                    echo 'success'
                 }
             }
         }
