@@ -28,4 +28,4 @@ spec:
     spec:
       containers:
         - name: spring
-          image: jang1023/sbimage:latest
+          image: jang1023/sbimage:20
